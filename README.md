@@ -1,0 +1,1 @@
+# Stid-Schema-Draft-TypeScript
