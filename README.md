@@ -1,5 +1,6 @@
 # Stid-Schema-Draft-TypeScript
-
+### 実行
+`node "パス"` (ex.`node ./src/v1/index.ts`)
 ### 暫定
 ```json
 {
