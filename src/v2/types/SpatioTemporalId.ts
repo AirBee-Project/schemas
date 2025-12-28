@@ -1,9 +1,11 @@
 type Dim = {
   // 各次元の範囲 or 単体
-  f?: [number, number] | [number];
-  x?: [number, number] | [number];
-  y?: [number, number] | [number];
-  t?: [number, number] | [number];
+
+  //拡張記法のLimitRange,Singleに対応
+  f?: [number, number?];
+  x?: [number, number?];
+  y?: [number, number?];
+  t?: [number, number?];
 
   //データの参照
   ref?: [number, number][];
@@ -27,7 +29,7 @@ type Value<T> = {
   data: T[];
 };
 
-export type Stid<T = any> = {
+export type KasaneJson<T = string | boolean | number | object> = {
   // このファイルのメタデータ
   meta: {
     version: string;

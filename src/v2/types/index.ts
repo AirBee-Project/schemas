@@ -1,6 +1,6 @@
-import type { Stid } from "./SpatioTemporalId.js";
+import type { KasaneJson } from "./SpatioTemporalId.js";
 
-let test: Stid = {
+let test: KasaneJson = {
   meta: {
     version: "1.0",
     description: "東京都の気象データ",
@@ -19,7 +19,7 @@ let test: Stid = {
     {
       z: 0,
       i: 0,
-      dims: [{ f: [30, 30], ref: [[0, 1]] }],
+      dims: [{ f: [30], ref: [[0, 1]] }],
     },
   ],
 };
