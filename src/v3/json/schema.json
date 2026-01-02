@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schema/spatio-temporal-id-json.schema.json",
+  "title": "spatial-id-json",
+  "type": "object",
+  "required": [
+    "meta",
+    "fields",
+    "ids"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "version",
+        "unique"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "unique": {
+          "type": "boolean"
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "data"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    "ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "z",
+          "i",
+          "dims"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "z": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "i": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "dims": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "#/$defs/dims"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "rangeOrSingle": {
+      "oneOf": [
+        {
+          "description": "Single value: [v]",
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "items": {
+            "type": "integer"
+          }
+        },
+        {
+          "description": "Range value: [start, end] (start <= end; semantic constraint)",
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "items": false
+        }
+      ]
+    },
+    "refPair": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "integer",
+          "minimum": 0
+        }
+      ],
+      "items": false
+    },
+    "dims": {
+      "type": "object",
+      "required": [
+        "ref"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "f": {
+          "$ref": "#/$defs/rangeOrSingle"
+        },
+        "x": {
+          "$ref": "#/$defs/rangeOrSingle"
+        },
+        "y": {
+          "$ref": "#/$defs/rangeOrSingle"
+        },
+        "t": {
+          "$ref": "#/$defs/rangeOrSingle"
+        },
+        "ref": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/refPair"
+          }
+        }
+      }
+    }
+  }
+}
