@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 /// and must be validated at the application level.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RangeOrSingle {
+pub enum Dimension {
     Single([i64; 1]),
     Range([i64; 2]),
 }
@@ -28,19 +28,19 @@ pub struct FieldRefPair(pub usize, pub usize);
 pub struct Dims {
     /// Altitude index (vertical direction)
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub f: Option<RangeOrSingle>,
+    pub f: Option<Dimension>,
 
     /// Longitude index (east-west direction)
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub x: Option<RangeOrSingle>,
+    pub x: Option<Dimension>,
 
     /// Latitude index (north-south direction)
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub y: Option<RangeOrSingle>,
+    pub y: Option<Dimension>,
 
     /// Time index
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub t: Option<RangeOrSingle>,
+    pub t: Option<Dimension>,
 
     /// References to fields/data
     pub ref_: Vec<FieldRefPair>,
