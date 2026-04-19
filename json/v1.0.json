@@ -34,10 +34,26 @@
             "type": "array",
             "description": "All elements in the array must be of the same type.",
             "anyOf": [
-              { "items": { "type": "string" } },
-              { "items": { "type": "number" } },
-              { "items": { "type": "boolean" } },
-              { "items": { "type": "object" } }
+              {
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "items": {
+                  "type": "number"
+                }
+              },
+              {
+                "items": {
+                  "type": "boolean"
+                }
+              },
+              {
+                "items": {
+                  "type": "object"
+                }
+              }
             ]
           },
           "ids": {
@@ -49,7 +65,6 @@
         },
         "required": [
           "name",
-          "value",
           "ids"
         ]
       }
@@ -72,21 +87,27 @@
         },
         "f": {
           "type": "array",
-          "items": { "type": "integer" },
+          "items": {
+            "type": "integer"
+          },
           "minItems": 1,
           "maxItems": 2,
           "description": "Optional (implies all values if omitted). Format: [integer] or [start, end] (start <= end)."
         },
         "x": {
           "type": "array",
-          "items": { "type": "integer" },
+          "items": {
+            "type": "integer"
+          },
           "minItems": 1,
           "maxItems": 2,
           "description": "Optional (implies all values if omitted). Format: [integer] or [start, end]. The order of start and end determines the wrapping direction around the Earth."
         },
         "y": {
           "type": "array",
-          "items": { "type": "integer" },
+          "items": {
+            "type": "integer"
+          },
           "minItems": 1,
           "maxItems": 2,
           "description": "Optional (implies all values if omitted). Format: [integer] or [start, end] (start <= end)."
@@ -98,7 +119,9 @@
         },
         "t": {
           "type": "array",
-          "items": { "type": "integer" },
+          "items": {
+            "type": "integer"
+          },
           "minItems": 1,
           "maxItems": 2,
           "description": "Optional (implies all values if omitted). Format: [integer] or [start, end] (start <= end)."
