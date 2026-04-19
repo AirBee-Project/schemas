@@ -2,12 +2,11 @@
 
 時空間ID情報を管理するためのJSON Schemaをホストしています。環境データやドローン関連の複雑なデータを異なるシステム間で円滑に交換することを目的として設計されています。
 
-アーキテクチャの背景や詳細な仕様については、以下の公式ガイドラインを必ずご参照ください：[IPA 4D時空間データガイドライン](https://www.ipa.go.jp/digital/architecture/guidelines/4dspatio-temporal-guideline.html)
+時空間IDについては公式ガイドラインをご覧ください：[IPA 4D時空間データガイドライン](https://www.ipa.go.jp/digital/architecture/guidelines/4dspatio-temporal-guideline.html)
 
 ## スキーマの仕様
 
-スキーマファイルは以下のURLで公開・ホストされています：
-`https://airbee-project.github.io/schemas/json/v1.0.json`
+スキーマファイル：`https://airbee-project.github.io/schemas/json/v1.0.json`
 
 ### 使い方
 
