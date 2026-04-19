@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://airbee-project.github.io/schemas/json/v1.0.json",
+  "title": "Spatial-temporal Data",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version"
+      ]
+    },
+    "option": {
+      "type": "object",
+      "description": "You can create data of any structure here, such as custom metadata."
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "array",
+            "description": "All elements in the array must be of the same type.",
+            "anyOf": [
+              { "items": { "type": "string" } },
+              { "items": { "type": "number" } },
+              { "items": { "type": "boolean" } },
+              { "items": { "type": "object" } }
+            ]
+          },
+          "ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/spatialTemporalId"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "value",
+          "ids"
+        ]
+      }
+    }
+  },
+  "required": [
+    "meta",
+    "data"
+  ],
+  "definitions": {
+    "spatialTemporalId": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "An object representing a Spatial-temporal ID.",
+      "properties": {
+        "z": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "ZoomLevel"
+        },
+        "f": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 1,
+          "maxItems": 2,
+          "description": "Optional (implies all values if omitted). Format: [integer] or [start, end] (start <= end)."
+        },
+        "x": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 1,
+          "maxItems": 2,
+          "description": "Optional (implies all values if omitted). Format: [integer] or [start, end]. The order of start and end determines the wrapping direction around the Earth."
+        },
+        "y": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 1,
+          "maxItems": 2,
+          "description": "Optional (implies all values if omitted). Format: [integer] or [start, end] (start <= end)."
+        },
+        "i": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Optional. Used to represent temporal data. If omitted, it is valid for all times."
+        },
+        "t": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "minItems": 1,
+          "maxItems": 2,
+          "description": "Optional (implies all values if omitted). Format: [integer] or [start, end] (start <= end)."
+        },
+        "ref": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "References the index within the value array."
+        }
+      },
+      "required": [
+        "z"
+      ]
+    }
+  }
+}
